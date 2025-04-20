@@ -24,8 +24,7 @@ Follow these steps to set up and run the script:
 ### 3. Create and Activate a Virtual Environment
 ```bash
   python3 -m venv venv
-  source venv/bin/activate  # On macOS/Linux
-  venv\Scripts\activate     # On Windows
+  source venv/bin/activate
 ```
 
 ### 4. Install Dependencies
@@ -34,9 +33,9 @@ Follow these steps to set up and run the script:
 ```
 
 ### 5. Run the Script
-```bash  cd src/api/
+```bash  
+  cd src/api/
   python product_chat.py
-
 ```
 
 ### 6. Deactivating the Virtual Environment
@@ -49,5 +48,5 @@ deactivate
 
 ![logs.png](docs/logs.png)
 
-## references
+## References
 https://martinfowler.com/articles/gen-ai-patterns
