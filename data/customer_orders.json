@@ -1,0 +1,25 @@
+{
+  "customer": {
+    "id": "1",
+    "firstName": "Bob",
+    "lastName": "Smith",
+    "age": 35,
+    "email": "johnsmith@example.com",
+    "phone": "555-123-4567",
+    "address": "123 Main St,  Anytown USA, 12345",
+    "orders": [
+      {
+        "id": "P999",
+        "name": "Iphone",
+        "description": "Iphone 5s mini",
+        "price": 100
+      },
+      {
+        "id": "P999",
+        "name": "Charger",
+        "description": "apple wireless charger",
+        "price": 5
+      }
+    ]
+  }
+}

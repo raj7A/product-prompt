@@ -1,0 +1,5 @@
+[
+  {"id": "P001", "name": "Phone", "description": "Iphone 14 Pro Max with 256GB storage.", "price": 900},
+  {"id": "P002", "name": "Laptop", "description": "macbook pro 16 inch with M1 chip.", "price": 1200},
+  {"id": "P003", "name": "Phone", "description": "android phone with 128GB storage.", "price": 600}
+]
