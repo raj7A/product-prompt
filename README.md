@@ -42,10 +42,16 @@ Follow these steps to set up and run the script:
   pip install -r requirements.txt
 ```
 
-### 5. Run the Script
+### 5. Run
+1. Start the app
 ```bash  
-  cd src/api/
-  python product_chat.py
+  uvicorn src.api.product_chat:app --host 0.0.0.0 --port 8000
+```
+2. Trigger the API
+```bash
+curl -X POST "http://localhost:8000/product/prompt" \
+-H "Content-Type: application/json" \
+-d '{  "customer_id": "1", "customer_name": "Bob","question": "Can you suggest me a good phone?"}'
 ```
 
 ### 6. Deactivating the Virtual Environment
@@ -54,6 +60,8 @@ deactivate
 ```
 
 ## Sample output:
+
+![output.png](docs/output.png)
 
 [product_chat.log](logs/product_chat.log)
 

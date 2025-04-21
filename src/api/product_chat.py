@@ -5,6 +5,10 @@ from typing import List
 import warnings
 import logging
 import json
+from fastapi import FastAPI, HTTPException
+from typing import List
+import logging
+from pydantic import BaseModel
 
 warnings.filterwarnings("ignore", category=DeprecationWarning, message="`search` method is deprecated and will be removed in the future. Use `query_points` instead.")
 
@@ -34,7 +38,7 @@ def initialize_vector_store():
     logging.info("Vector store collection created.")
 
     points = []
-    for idx, product in enumerate(load_data("../../data/products.json")):
+    for idx, product in enumerate(load_data("data/products.json")):
         text = serialize_product(product)
         vector = get_embedding(text)
         points.append(PointStruct(
@@ -81,7 +85,7 @@ def receive_request(customerId: str, customer_name: str, question: str):
 
 def get_similar_prompts(question: str) -> str:
     logging.info("REWRITER::start - Rewriting prompt query...")
-    with open("../../prompt_templates/rewriter_template.txt", "r") as file:
+    with open("prompt_templates/rewriter_template.txt", "r") as file:
         rewriter_template = file.read()
 
     rewriter_prompt = rewriter_template.format(question=question)
@@ -131,7 +135,7 @@ def generate_prompt_response(customer_name: str, customer_orders: str, question:
     else:
         formatted_context = "No relevant products found."
 
-    with open("../../prompt_templates/chat_template.txt", "r") as file:
+    with open("prompt_templates/chat_template.txt", "r") as file:
         prompt_template = file.read()
 
     prompt = prompt_template.format(
@@ -147,7 +151,7 @@ def generate_prompt_response(customer_name: str, customer_orders: str, question:
 
 def get_customer_orders(customer_id: str) :
     logging.info("RETRIEVER::start - Retrieving customer orders...")
-    customer_orders = load_data("../../data/customer_orders.json")
+    customer_orders = load_data("data/customer_orders.json")
     logging.info("RETRIEVER::end - Retrieving customer orders...")
     return customer_orders
 
@@ -168,5 +172,44 @@ def main():
     logging.info(final_response)
     logging.info("*********************************************************************")
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
+
+app = FastAPI()
+
+class QueryRequest(BaseModel):
+    customer_id: str
+    customer_name: str
+    question: str
+
+@app.on_event("startup")
+def on_startup():
+    try:
+        initialize_vector_store()
+        logging.info("Vector store initialized on application startup.")
+    except Exception as e:
+        logging.error(f"Error initializing vector store on startup: {e}")
+
+@app.on_event("shutdown")
+def on_startup():
+    try:
+        client.delete_collection(COLLECTION_NAME)
+        logging.info("Vector store collection deleted on application shutdown.")
+    except Exception as e:
+        logging.error(f"Error deleting vector store collection on shutdown: {e}")
+
+@app.post("/product/prompt")
+def query_products(request: QueryRequest):
+    try:
+        customer_orders = get_customer_orders(request.customer_id)
+        rewritten_alternate_prompts = get_similar_prompts(request.question)
+        context = search_for_products(rewritten_alternate_prompts)
+        final_response = generate_prompt_response(request.customer_name, customer_orders, request.question, context)
+        return {"response": final_response}
+    except Exception as e:
+        logging.error(f"Error processing query: {e}")
+        raise HTTPException(status_code=500, detail="Failed to process query.")
+
+@app.get("/health")
+def health_check():
+    return {"status": "OK"}
