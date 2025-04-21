@@ -9,8 +9,8 @@
 ## Technology Stack
 
 - **Python**: The programming language used for the script.
-- **ollama**: A local LLM server that runs on your machine.
-- **docker**: A containerization platform used to run Qdrant.
+- **Ollama**: A local LLM server that runs on your machine.
+- **Docker**: A containerization platform used to run Qdrant.
 - **Qdrant**: A vector database used for storing and retrieving embeddings.
 
 ## Installation and Setup
@@ -61,7 +61,10 @@ deactivate
 
 ## Sample output:
 
+### 1. Prompt response
 ![output.png](docs/output.png)
+
+### 2. Prompt logs
 
 [product_chat.log](logs/product_chat.log)
 
