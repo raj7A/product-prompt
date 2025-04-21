@@ -9,7 +9,7 @@ import json
 warnings.filterwarnings("ignore", category=DeprecationWarning, message="`search` method is deprecated and will be removed in the future. Use `query_points` instead.")
 
 logging.basicConfig(
-    filename="../../logs/product_chat.log",
+    # filename="../../logs/product_chat.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s")
 
