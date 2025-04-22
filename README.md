@@ -5,6 +5,11 @@ This setup runs completely on local developer machine, and to be used for poc/le
 
 ## Overview
 
+### Architecture
+![architecture.png](docs/architecture.png)
+
+### Prompt flow
+
 ![prompt_flow.png](docs/prompt_flow.png)
 
 ## Technology Stack
