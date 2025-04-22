@@ -79,11 +79,8 @@ deactivate
 
 ## Disclaimer
 This module is for learning purposes only.
-Thought it covers the aspects of accuracy/security, it's not optimized for accuracy/performance/security. 
-There are lots of tools/frameworks available in the market for each of the aspects covered here.
-
-## Actual tools available for each services
-
+Thought it covers the aspects of accuracy/security/evaluations, it's not optimized for the same. 
+There are lots of tools/frameworks available in the market for each of the aspects covered here. Explore them for production use cases.
 
 ## References
 

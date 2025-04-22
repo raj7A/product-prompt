@@ -2,3 +2,5 @@ requests
 qdrant-client
 fastapi
 uvicorn
+deepeval
+pytest
