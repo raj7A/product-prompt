@@ -1,6 +1,9 @@
 # GenAI prompting application
 
 A RAG based GenAI prompting application that showcases the [genAI Patterns](https://martinfowler.com/articles/gen-ai-patterns). 
+
+This application is capable of answering customer queries (like suggest me a good phone) based on the product catalog and customer purchase history.
+
 This setup runs completely on local developer machine, and to be used for poc/learning purpose.
 
 ## Overview
