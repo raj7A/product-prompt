@@ -9,7 +9,7 @@ This setup runs completely on local developer machine, and to be used for poc/le
 ## Overview
 
 ### Architecture
-![architecture.png](docs/architecture.png)
+![arch.png](docs/arch.png)
 
 ### Prompt flow
 
