@@ -1,5 +1,7 @@
 # GenAI prompting application
 
+Read this [blog](https://medium.com/@r_7/e1d165962656) once for more context,
+
 A RAG based GenAI prompting application that showcases the [genAI Patterns](https://martinfowler.com/articles/gen-ai-patterns). 
 
 This application is capable of answering customer queries (like suggest me a good phone) based on the product catalog and customer purchase history.
@@ -86,9 +88,12 @@ deactivate
 ![logs.png](docs/logs.png)
 
 ## Disclaimer
-This module is for learning purposes only.
-Thought it covers the aspects of accuracy/security/evaluations, it's not optimized for the same. 
-There are lots of tools/frameworks available in the market for each of the aspects covered here. Explore them for production use cases.
+This application is to be used for learning purposes only, specifically to explore how a genAI application would look like, and to help understand these patterns better.
+Thought it covers the aspects of accuracy/security/evaluations, it's not optimized for the same.
+There are lots of tools/frameworks (refer the AI Stack image below) available in the market for each of the aspects covered in the application, with more tools comes the more power to the app. 
+Explore them for production use cases.
+
+![AI-Stack.png](docs/AI-Stack.png)
 
 ## References
 
